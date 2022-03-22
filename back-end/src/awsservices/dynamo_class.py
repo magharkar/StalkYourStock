@@ -28,9 +28,10 @@ class table():
         for item in input_json:
             try:
                 table.put_item(Item=item)
-            except:
-                pass
-        print(f'Inserted Data into {tableName}')
+                print(f'Inserted Data into {tableName}')
+            except Exception as e:
+                print(e)
+
 
     def getItem(self, tableName, key):
         try:

@@ -5,9 +5,9 @@ class aws_session():
     def __init__(self):
         self.session = {
             "nikita-aws-lab": {
-                "AWS_ACCESS_KEY_ID": "ASIA3HLQO46HBGZSWPO7",
-                "AWS_SECRET_ACCESS_KEY": "iJwGU9nNuEo/LmMRKUGP4jUkjWqGZDpvMC7EzDHc",
-                "AWS_SESSION_TOKEN": "FwoGZXIvYXdzEHcaDG9uLHnOl32mfdblmiLAAc5UQXQDLmF2i7yklskEWXTXpx9Cm29C7a1WKi1EUriM8WTXirqjGKhc4lQ5ku2ebGlKwNjKX2pxxn6N5LA2VQd5F8XF2Adb77qovSmhcVuJM1N+mBeUC4Hw7tfvGLwOrZ/6wkTDtlYCW/3QHuvkraJ1D+FPhbGD7D/eS3WAOdYG5+mySWEq8nz6OQYil3BMJDzGOhJeG/8HFuPIz+NUV5ffUclkOYScGCTHAw/P8TY4CDrmHd+RKbenZvbzgWoEBCjXm9mRBjItE7gT1eZWb6FxOPKzSUAUUS0p0xOlyqA3P1UNNRrK4CIFL/zzi0Ho5/Xzj/Gl"
+                "AWS_ACCESS_KEY_ID": "ASIA3HLQO46HEY6RHQF7",
+                "AWS_SECRET_ACCESS_KEY": "FvOCkC0hkk6m0lEVcp223qy24uHOQN3HQORkbTlq",
+                "AWS_SESSION_TOKEN": "FwoGZXIvYXdzEKv//////////wEaDJ7IuKdaKphHC2y9rSLAAVJEHN2hi3zc72sEYoKQEzHNHMiesCw4Fo9cD3nSUqbgk81RXIpQMTZu16TgPSdwQCCpuMMHWbB5v2x1hMLVdjN+WUP6r4zD66jroqqvIhF6ENqrWuVrvp8/1lgy3h+/mNLG/6zltvOVB3Jen7qGjp+AOsqT8K00wX6afuxgzyBWEJVULrgM3nFuJGa2cmSfes1xxkXhb50Y2yXl/kdZ5dtgyykrQLjfunqwJ50LVgB1tW6nSvkNG4Jk8Fo0twg5vCjs2+SRBjItLOYazra7UDoP/lMIiUrY+ltphIvUTouCj3UDEbr2NVzV/TiLonaJPr6y4rr8"
             },
             "ruchi-aws-lab": {
                 "AWS_ACCESS_KEY_ID": "ASIA3HLQO46HMTXZWHKL",

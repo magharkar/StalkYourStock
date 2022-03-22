@@ -10,9 +10,11 @@ dynamodb = boto3.resource("dynamodb")
 dynamodb_tablename = 'ticker_oneyear'
 table = dynamodb.Table(dynamodb_tablename)
 
+
 def float_to_decimal(num):
     return Decimal(str(num))
-    
+
+
 def write_data_to_dynamodb(df):
     df = df.fillna(0)
     # convert any floats to decimals
@@ -76,6 +78,7 @@ def read_dynamo():
     json = table.scan()
     print(json)
 
+
 def read_prefix_to_df(bucketname, prefix):
     try:
         s3 = boto3.resource('s3')
@@ -94,7 +97,8 @@ def read_prefix_to_df(bucketname, prefix):
     except Exception as err:
         print(err)
     return df
-    
+
+
 def lambda_handler(event, context):
     #bucket = event["Records"][0]["s3"]["bucket"]["name"]
     bucket = "cloudsquad-project-bucket"

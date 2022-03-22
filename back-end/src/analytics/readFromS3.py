@@ -1,9 +1,13 @@
 import boto3
 import io
 import pandas as pd
+import sys, os.path
 
+sys.path.append((os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+ '\\awsservices\\'))
+import dynamo_class
 
 def read_prefix_to_df(bucketname, prefix):
+
     s3 = boto3.resource('s3')
     bucket = s3.Bucket(bucketname)
     prefix_objs = bucket.objects.filter(Prefix=prefix)
