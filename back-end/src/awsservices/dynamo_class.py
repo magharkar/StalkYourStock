@@ -1,7 +1,7 @@
 import boto3
 import aws_session as session
 import json
-from boto3.dynamodb.conditions import Key
+from boto3.dynamodb.conditions import Key, Attr
 
 
 class table():
@@ -47,10 +47,14 @@ class table():
         response_json = table.scan()
         return response_json
 
+    def read_dynamo_and_sort(self, tablename, sort_conition):
+        dynamo_table = self.db.Table(tablename)
+        response_json = dynamo_table.scan(FilterExpression=Attr('ticker').eq(sort_conition))
+        return response_json
 
 if __name__ == '__main__':
     movies = table()
-    tableName = "Movie"
+    # tableName = "Movie"
     """
     primaryKey = [
         {
@@ -91,6 +95,17 @@ if __name__ == '__main__':
       }
     }]
 
-    movies.insert_data(tableName=tableName, input_json=jsondata)
-    print(movies.getItem(tableName=tableName, key={"year": 2021, "title":"Some Title"}))
-    print(movies.read_dynamo(tableName))
+    # movies.insert_data(tableName=tableName, input_json=jsondata)
+    # print(movies.getItem(tableName=tableName, key={"year": 2021, "title":"Some Title"}))
+    # print(movies.read_dynamo(tableName))
+    provisionedThroughput = {
+        'ReadCapacityUnits': 10,
+        'WriteCapacityUnits': 10
+    }
+    movies.createTable("ticker_history_data",KeySchema=[{
+                'AttributeName': 'insert_timestamp ',
+                'KeyType': 'String'
+            }],AttributeDefinitions=[{
+                'AttributeName': 'insert_timestamp',
+                'AttributeType': 'S'
+            }],ProvisionedThroughput=provisionedThroughput)
