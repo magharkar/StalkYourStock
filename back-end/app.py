@@ -3,10 +3,10 @@ import sys
 
 from flask import Flask
 
-from compare_tickers import get_ticker_comparison
-from get_day_wise_data import day_wise_data
+from src.apis.compare_tickers import get_ticker_comparison
+from src.apis.get_day_wise_data import day_wise_data
 
-sys.path.append((os.path.abspath(os.path.join(os.path.dirname(__file__), '..')) + '\\awsservices\\'))
+sys.path.append((os.path.abspath(os.path.join(os.path.dirname(__file__), 'src')) + '\\awsservices\\'))
 
 app = Flask(__name__)
 app.register_blueprint(get_ticker_comparison)
