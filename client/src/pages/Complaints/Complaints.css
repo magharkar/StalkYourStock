@@ -1,0 +1,17 @@
+/**
+ * @author Kandarp Parikh
+ */
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(19, 21, 138, 0.2);
+    transition: 0.3s;
+    width: 100%;
+    margin: 2%;
+    padding: 1%;
+    margin-bottom: 3px;
+    box-sizing: border-box;
+    display: "inline";
+    float: "center";
+    background: orange;
+  }
+  
