@@ -1,6 +1,0 @@
-/backend/.idea
-/backend/venv
-.idea/*
-back-end/src/__pycache__/
-back-end/src/awsservices/__pycache__/
-back-end/src/analytics/__pycache__/
