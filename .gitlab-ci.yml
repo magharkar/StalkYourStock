@@ -7,7 +7,7 @@ deploy:
     - cd client
     - npm install
     - cd ..
-    - git subtree push --prefix client/ https://$HEROKU_USER:$HEROKU_API_KEY@https://git.heroku.com/cloudsquad.git main
+    - git subtree push --prefix client/ https://$HEROKU_USER:$HEROKU_API_KEY@https://git.heroku.com/cloudsquad.git HEAD:master
     - echo "Deployed to heroku server"
   environment:
     name: production
