@@ -8,16 +8,15 @@ import {
     PageWrapper, FormWrapper, ImageWrapper, ContentWrapper, ErrorMail,
     Title, ControlContainer, Container, Row, TooltipWrapper, TooltipTitle, TooltipRow
 } from '../Login/Login.style';
-import TextBox from '../../../../stalkyourstock/src/components/TextBox/Textbox';
+import TextBox from "../../components/TextBox/Textbox";
 import Navbar from '../../components/Navbar/NavLanding';
 import { FooterContainer } from '../../components/Footer/FooterContainer';
-import AppButton from '../../../../stalkyourstock/src/components/Button/Button';
 import { Link, useNavigate } from 'react-router-dom';
 //import baseURL from '../../config';
-import PasswordTextBox from '../../../../stalkyourstock/src/components/TextBox/PasswordTextBox';
+import PasswordTextBox from '../../components/TextBox/PasswordTextBox';
 import { Tooltip } from '@mui/material';
 import { Button } from '@mui/material';
-import stockImage from '../../../../stalkyourstock/src/assets/pictures/stocks.jpg';
+import stockImage from '../../assets/pictures/stocks.jpg'
 
 
 const Registration = () => {
@@ -110,8 +109,8 @@ const Registration = () => {
                         <ControlContainer>
                             <TextBox
                                 required
-                                error={firstName == "" && isError}
-                                helperText={firstName == "" && isError ? requiredInfoString : ""}
+                                error={firstName === "" && isError}
+                                helperText={firstName === "" && isError ? requiredInfoString : ""}
                                 onChange={(event) => setFirstName(event.target.value)}
                             >
                                 First name
@@ -119,8 +118,8 @@ const Registration = () => {
                             <Row />
                             <TextBox
                                 required
-                                error={lastName == "" && isError}
-                                helperText={lastName == "" && isError ? requiredInfoString : ""}
+                                error={lastName === "" && isError}
+                                helperText={lastName === "" && isError ? requiredInfoString : ""}
                                 onChange={(event) => setLastName(event.target.value)}
                             >
                                 Last name
@@ -129,7 +128,7 @@ const Registration = () => {
                             <TextBox
                                 required
                                 onChange={(event) => setEmailId(event.target.value)}
-                                error={(emailId == "" || !emailId.match(emailRegEx)) && isError}
+                                error={(emailId === "" || !emailId.match(emailRegEx)) && isError}
                                 helperText={helperTextForEmail}
                             >
                                 Email

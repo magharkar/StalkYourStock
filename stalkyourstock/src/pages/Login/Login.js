@@ -11,11 +11,10 @@ import {
 import TextBox from '../../components/TextBox/Textbox';
 import Navbar from '../../components/Navbar/NavLanding';
 import { FooterContainer } from '../../components/Footer/FooterContainer';
-import AppButton from '../../../../stalkyourstock/src/components/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import PasswordTextBox from '../../components/TextBox/PasswordTextBox';
 import { Link } from 'react-router-dom';
-import stockImage from '../../../../stalkyourstock/src/assets/pictures/stocks.jpg';
+import stockImage from '../../assets/pictures/stocks.jpg'
 import { Button } from '@mui/material';
 function Login(){
     const [emailId, setEmailId] = useState("");

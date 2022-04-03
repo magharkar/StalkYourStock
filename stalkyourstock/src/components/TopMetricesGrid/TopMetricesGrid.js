@@ -3,7 +3,7 @@
  */
 
 import React, { useState , useEffect } from "react";
-import { FlexContainer, Title } from "./TopMetricesGrid.style";
+import { FlexContainer, Title, TickerWrapper } from "./TopMetricesGrid.style";
 
 function TopMetricesGrid() {
     const [tickerStats, setTickerStats] = useState([]);
@@ -47,9 +47,9 @@ function TopMetricesGrid() {
           {
             tickerStats.map(ticker => {
                 return(
-                    <div>
+                    <TickerWrapper>
                         {ticker.ticker}
-                    </div>
+                    </TickerWrapper>
                 )
             })
           }
