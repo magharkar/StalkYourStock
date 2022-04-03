@@ -12,5 +12,3 @@ deploy:
   environment:
     name: production
     url: https://cloudsquad.herokuapp.com/
-  only:
-    - master
