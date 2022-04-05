@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  frontend-service:
+    image: 00897784/stalkyourstock-frontend:v2
+    ports:
+      - 3001:3000
