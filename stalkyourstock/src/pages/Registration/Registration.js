@@ -17,7 +17,7 @@ import PasswordTextBox from '../../components/TextBox/PasswordTextBox';
 import { Tooltip } from '@mui/material';
 import { Button } from '@mui/material';
 import stockImage from '../../assets/pictures/stocks.jpg'
-
+import baseURL from '../../config';
 
 const Registration = () => {
 
@@ -37,8 +37,7 @@ const Registration = () => {
     const emailExistsString = "This Email Id already exists"
     const emailRegEx = /^[a-zA-Z0-9\.-]+@([a-zA-Z0-9-]+\.)+[a-z]{2,6}$/;
     const passwordRegEx = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*?]).{8,}$/;
-    //const url = baseURL + "/users/register"
-    const url = "/users/register"
+    const url = baseURL + "/register"
     let helperTextForEmail = "";
     let helperTextForPassword = "";
     if ((!emailId.match(emailRegEx) || emailId == "") && isError) {
@@ -61,7 +60,7 @@ const Registration = () => {
         let doPasswordsMatch = true;
         let emptyFieldsDetected = false;
 
-        if (firstName == "" || lastName == "" || emailId == "" || password == "" || confirmPassword == "") {
+        if (firstName === "" || lastName === "" || emailId === "" || password === "" || confirmPassword === "") {
             emptyFieldsDetected = true
             setError(true);
             //setIsFormSubmitted(true);
@@ -78,15 +77,16 @@ const Registration = () => {
         if (!emptyFieldsDetected && isPasswordValid && doPasswordsMatch && isEmailValid) {
             let userJson = {
                 "email": emailId,
-                "firstName": firstName,
-                "lastName": lastName,
+                // "firstName": firstName,
+                // "lastName": lastName,
                 "password": password,
-                "userType": "customer"
+                //"userType": "customer"
             };
             axios.post(url, userJson).then(res => {
                 console.log("SUCCESS!")
                 navigate('/home');
             }).catch(err => {
+                console.log(err);
                 setEmailExistsError(true);
             });
 

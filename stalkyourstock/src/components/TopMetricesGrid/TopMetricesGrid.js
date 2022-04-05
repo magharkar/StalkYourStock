@@ -3,42 +3,45 @@
  */
 
 import React, { useState , useEffect } from "react";
-import { FlexContainer, Title, TickerWrapper } from "./TopMetricesGrid.style";
+import axios from "axios";
+import baseURL from "../../config";
+import { FlexContainer, Title, TickerWrapper, TickerFlex, Close, Percentage } from "./TopMetricesGrid.style";
 
 function TopMetricesGrid() {
     const [tickerStats, setTickerStats] = useState([]);
-    const dummyTickerStats = [
-        {
-            Adj_Close: "4631.6000976562",
-            percentage_change: "2",
-            ticker: "GSPC"
-        },
-        {
-            Adj_Close: "14619.6396484375",
-            percentage_change: "2",
-            ticker: "IXIC"
-        },
-        {
-            Adj_Close: "4631.6000976562",
-            percentage_change: "2",
-            ticker: "GSPC"
-        },
-        {
-            Adj_Close: "4631.6000976562",
-            percentage_change: "2",
-            ticker: "GSPC"
-        },
-    ]
+    // const dummyTickerStats = [
+    //     {
+    //         closing_price: "16787.75",
+    //         percentage_change: "-0.70",
+    //         ticker: "^NYA"
+    //     },
+    //     {
+    //         closing_price: "14261.50",
+    //         percentage_change: "0.29",
+    //         ticker: "^IXIC"
+    //     },
+    //     {
+        
+    //         closing_price: "34818.27",
+    //         percentage_change: "0.40",
+    //         ticker: "^DJI"
+    //     },
+    //     {
+        
+    //         closing_price: "4545.86",
+    //         percentage_change: "0.34",
+    //         ticker: "^GSPC"
+    //     }
+    // ]
 
     useEffect(() => {
-        // const getURL = "localhost:5000/get_data_for_tickers?ticker1=" + ticker1 + "&ticker2=" + ticker2;
-        // axios.get(getURL)
-        // .then(res => {
-        //     const data = res.data;
-        //     //setTickerStats(data);
-        //     return data;
-        // })
-        setTickerStats(dummyTickerStats);
+        const getURL = baseURL + "/get_best_four_world_indices";
+        axios.get(getURL)
+        .then(res => {
+            const data = res.data;
+            setTickerStats(data.response);
+            return data;
+        })
       }, []); 
 
 
@@ -48,7 +51,11 @@ function TopMetricesGrid() {
             tickerStats.map(ticker => {
                 return(
                     <TickerWrapper>
-                        {ticker.ticker}
+                        <TickerFlex>
+                            <Title>{ticker.ticker}</Title>
+                            <Close>{ticker.closing_price}</Close>
+                        </TickerFlex>
+                        <Percentage className={ ticker.percentage_change.charAt(0) === "-" &&  "negative"}>{ticker.percentage_change}</Percentage>
                     </TickerWrapper>
                 )
             })

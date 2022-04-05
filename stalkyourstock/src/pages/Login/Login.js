@@ -16,6 +16,8 @@ import PasswordTextBox from '../../components/TextBox/PasswordTextBox';
 import { Link } from 'react-router-dom';
 import stockImage from '../../assets/pictures/stocks.jpg'
 import { Button } from '@mui/material';
+import baseURL from '../../config';
+
 function Login(){
     const [emailId, setEmailId] = useState("");
     const [password, setPassword] = useState("");
@@ -23,36 +25,29 @@ function Login(){
     let navigate = useNavigate();
 
     const handleLogin = (emailId, password) => {
-        //const url = baseURL + "/users/login";
+        const url = baseURL + "/login";
         let userJson = {
             "email": emailId,
             "password": password
         }
-        // axios.post(url, userJson).then(
-        //     res => {
-        //         console.log(res);
-        //         if (res.status === 200) {
-        //             console.log("Logged in");
-        //             localStorage.setItem("emailId",emailId);
-        //             if(res.data.userType == "customer"){
-        //                 navigate("/home");
-        //             } 
-        //             else if(res.data.userType == "admin"){
-        //                 navigate("/admin");
-        //             }
-        //             else if(res.data.userType=="supplier"){
-        //                 navigate("/supplier");
-        //             }
-        //         } else {
-        //             console.log("sets invalid login")
-        //             setIsLoginValid(false);
-        //         }
-        //     }
-        // ) .catch(
-        //     error => {
-        //        setIsLoginValid(false);
-        //     }
-        // )
+        axios.post(url, userJson).then(
+            res => {
+                console.log(res);
+                if (res.status === 200) {
+                    console.log("Logged in");
+                    localStorage.setItem("emailId",emailId);
+                    navigate('/home');
+                } else {
+                    console.log("sets invalid login")
+                    setIsLoginValid(false);
+                }
+            }
+        ).catch(
+            error => {
+                console.log(error);
+               setIsLoginValid(false);
+            }
+        )
     }
     const linkStyles = {
         paddingTop: "8px",

@@ -3,10 +3,12 @@
  */
 
 import React from "react";
-import {PageWrapper, ContentWrapper, TopMetricesContainer, StockTableContainer} from "./Dashboard.style";
+import {PageWrapper, ContentWrapper, TopMetricesContainer, StockTableContainer,
+    Heading} from "./Dashboard.style";
 import Navbar from "../../components/Navbar/NavUser";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
 import TopMetricesGrid from "../../components/TopMetricesGrid/TopMetricesGrid";
+import StockTable from "../../components/StockTable/StockTable";
 
 function Dashboard(){
     return(
@@ -14,10 +16,11 @@ function Dashboard(){
             <Navbar />
             <ContentWrapper>
                 <TopMetricesContainer>
+                <Heading>World Metrices</Heading>
                     <TopMetricesGrid />
                 </TopMetricesContainer>
                 <StockTableContainer>
-
+                    <StockTable />
                 </StockTableContainer>
             </ContentWrapper>
             <FooterContainer />

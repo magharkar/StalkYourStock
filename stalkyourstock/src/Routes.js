@@ -11,6 +11,9 @@ import Registration from './pages/Registration/Registration';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Comparison from './pages/Comparison/Comparison';
 import Analysis from './pages/Analysis/Analysis';
+import Tickers from './pages/Tickers/Tickers';
+import SectorDetails from './pages/SectorDetails/SectorDetails';
+import TickerDetails from './pages/TickerDetails/TickerDetails';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
       <Route path='/home' element={<Dashboard />} />
       <Route path='/comparison' element={<Comparison />} />
       <Route path='/analysis' element={<Analysis />} />
+      <Route path='/tickers' element={<Tickers />} />
+      <Route path='/sector-details/:state' element={<SectorDetails />} />
+      <Route path='/ticker-details/:state' element={<TickerDetails />} />
     </Routes>
   );
 }

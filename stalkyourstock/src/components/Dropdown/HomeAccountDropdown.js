@@ -11,6 +11,7 @@ import Logout from '@mui/icons-material/Logout';
 import CompareIcon from '@mui/icons-material/Compare';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import AccountCircleRoundedIcon from "@mui/icons-material/AccountCircleRounded";
+import ShowChartIcon from '@mui/icons-material/ShowChart';
 import { useNavigate } from 'react-router-dom';
 
 export default function AccountMenu() {
@@ -34,6 +35,9 @@ export default function AccountMenu() {
     if(selectedOption === "Analysis"){
       navigate("/analysis");
     }
+    if(selectedOption === "Tickers"){
+      navigate("/tickers");
+    }
   }
   const handleClose = () => {
     setAnchorEl(null);
@@ -42,6 +46,11 @@ export default function AccountMenu() {
       {
         icon: <CompareIcon fontSize='small' />,
         text: "Comparison",
+        divider: false,
+      },
+      {
+        icon: <ShowChartIcon fontSize='small' />,
+        text: "Tickers",
         divider: false,
       },
       {
