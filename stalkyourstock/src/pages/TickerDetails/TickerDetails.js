@@ -25,22 +25,14 @@ import { TableContainer } from "@mui/material";
     const [companyData, setCompanyData] = useState({});
 
     useEffect(() => {
-        console.log("HERE");
-        //const request = state.substring(1);
-        //console.log(request);
         const getURL = baseURL + "/get_info_for_single_ticker?ticker=" + state;
         axios.get(getURL)
         .then(res => {
             const data = res.data;
-            console.log(res);
-            //populateData (data.response)
-            // setStockData(data.response);
-            // createTableData(data.response);
             setGraphData(data.graph_data);
             setCompanyData(data.response);
             return data;
         })
-        //setStockData(tableData);
     },[]); 
 
     const renderCompanyData = Object.keys(companyData).map(function(key) {

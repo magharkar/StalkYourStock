@@ -52,7 +52,6 @@ const Registration = () => {
 
 
     const registrationHandler = (firstName, lastName, emailId, password, confirmPassword) => {
-        console.log(firstName, lastName, emailId, password, confirmPassword);
         const emailRegEx = /^[a-zA-Z0-9\.-]+@([a-zA-Z0-9-]+\.)+[a-z]{2,6}$/;
         const passwordRegEx = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*?]).{8,}$/;
         let isEmailValid = true;
@@ -83,10 +82,8 @@ const Registration = () => {
                 //"userType": "customer"
             };
             axios.post(url, userJson).then(res => {
-                console.log("SUCCESS!")
                 navigate('/home');
             }).catch(err => {
-                console.log(err);
                 setEmailExistsError(true);
             });
 

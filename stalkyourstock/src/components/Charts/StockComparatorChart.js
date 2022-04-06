@@ -12,11 +12,9 @@ class StockComparatorChart extends React.Component {
   }
 
   componentDidUpdate() {
-      console.log("Updated");
   }
 
   componentDidMount() {
-      console.log("MOUNT!!!!!!!!!!");
     const { stock1Name, stock2Name, stock1Data, stock2Data, xAxisData } = this.props;
     this.setState({
       chartData: [

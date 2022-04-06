@@ -8,9 +8,12 @@ const ContentWrapper = styled.div`
 `;
 
 const SelectWrapper = styled.div`
+    padding: 24px;
     display: flex;
-    width: 60%;
-    justify-content: space-between;
 `;
 
-export { PageWrapper, ContentWrapper, SelectWrapper }
+const Row = styled.div`
+    display: flex;
+`;
+
+export { PageWrapper, ContentWrapper, SelectWrapper, Row }

@@ -5,7 +5,6 @@ class ApexChart extends React.Component {
     constructor(props) {
         super(props);
         const { index, x_axis, y_axis, description, width } = props;
-        console.log(index, x_axis,y_axis, description);
         this.state = {
         series: [{
             name: index,
@@ -42,6 +41,11 @@ class ApexChart extends React.Component {
         
         
         };
+    }
+
+    componentDidUpdate(prevState, prevProps) {
+            console.log(this.props);
+
     }
 
     componentDidMount() {
@@ -87,8 +91,8 @@ class ApexChart extends React.Component {
 
     render() {
         return (
-        <div id="chart" style={{margin: "auto"}}>
-                <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350} width={this.props.width} />
+        <div id="chart" key={this.props.index} style={{margin: "auto"}}>
+                <ReactApexChart key={this.props.index} options={this.state.options} series={this.state.series} type="line" height={350} width={this.props.width} />
         </div>
         );
     }

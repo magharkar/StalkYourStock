@@ -17,9 +17,7 @@ import { PageContainer } from "../LandingPage/LandingPage.style";
     const [ graphData, setGraphData ] = useState({});
 
     useEffect(() => {
-        console.log("HERE");
         const request = state.substring(1);
-        console.log(request);
         const getURL = baseURL + "/get_graph_data_for_indices?index=" + request;
         axios.get(getURL)
         .then(res => {

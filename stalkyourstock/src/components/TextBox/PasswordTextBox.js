@@ -37,11 +37,9 @@ function PasswordTextBox(props) {
     const [isPasswordVisible,setIsPasswordVisible] = useState(false);
     
     const  handleClickShowPassword = () => {
-        console.log("isPasswordVisible", isPasswordVisible);
         setIsPasswordVisible(!isPasswordVisible);
     }
     
-    console.log(props);
     return(
         <CssTextField 
             type={isPasswordVisible ? "text" : "password"}

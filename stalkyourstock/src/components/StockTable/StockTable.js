@@ -517,7 +517,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
         axios.get(getURL)
         .then(res => {
             const data = res.data;
-            console.log(data.response);
           //  populateData (data.resp)
             setStockData(data.response);
             createTableData(data.response);
@@ -529,13 +528,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     const createTableData = (stockData) => {
         let rowData = [];
         stockData.map(row => {
-            //console.log(row);
             const { Date, High, Low, Open, Volume, adj_close, percentage_change, ticker} = row;
             const singleRow = createData(Date, High, Low, Open, Volume, adj_close, percentage_change, ticker);
             rowData.push(singleRow);
             return row;
         })
-        //console.log(rowData);
         setRows(rowData);
     }
 

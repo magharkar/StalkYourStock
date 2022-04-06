@@ -29,7 +29,6 @@ const CssTextField = styled(TextField)({
   });
 
 function TextBox(props) {
-    console.log(props);
     return(
         <CssTextField 
             id="filled-basic" 

@@ -8,7 +8,7 @@ import axios from "axios";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { PageWrapper, ContentWrapper, SelectWrapper } from "./Analysis.style";
+import { PageWrapper, ContentWrapper, SelectWrapper, Row } from "./Analysis.style";
 import Navbar from "../../components/Navbar/NavUser";
 import ApexChart from "../../components/Charts/LineChart";
 import { FooterContainer } from "../../components/Footer/FooterContainer";
@@ -24,31 +24,32 @@ function Analysis() {
     const [analysisData, setAnalysisData] = useState({});
 
 useEffect(() => {
-    const data = getTickerData(ticker);
+    const data = getTickerData("VRTX");
     //const {price_array_1, price_array_2, x} = data;
     //updateGraph(price_array_1, price_array_2, x);
-    }); 
+    }, []); 
 
-    const getTickerData = (ticker) => {
-    const getURL = baseURL + "/get_day_wise_data?ticker=" + ticker;
-    axios.get(getURL)
-    .then(res => {
-        const data = res.data;
-        const jsonData = JSON.parse(data);
-        setAnalysisData(jsonData);
-        return data;
-    })
-}
+    const getTickerData = (recentTicker) => {
+        console.log("so many times");
+        const getURL = baseURL + "/get_day_wise_data?ticker=" + recentTicker;
+        axios.get(getURL)
+            .then(res => {
+                const data = res.data;
+                    setAnalysisData(data.response);
+        setTicker(recentTicker);
+                return data;
+        })
+    }
 
     return(
         <PageWrapper>
             <Navbar />
             <ContentWrapper>
                 <SelectWrapper>
-                    <InputLabel for="ticker1">Choose first Ticker</InputLabel>
+                    <InputLabel for="ticker1" style={{paddingTop: "16px", paddingRight: "16px", color: "#000", fontWeight: 700}}>Choose Ticker</InputLabel>
                     <Select name="ticker1" id="ticker1" defaultValue="VRTX" onClick= {(event)=> (event.preventDefault())} onChange={(event) => {
                         event.preventDefault();
-                        setTicker(event.target.value)}}>
+                        getTickerData(event.target.value)}}>
                         {
                             tickerData.map(ticker => (
                                 <MenuItem value={ticker}>{ticker}</MenuItem>
@@ -56,40 +57,49 @@ useEffect(() => {
                         }
                     </Select>
                 </SelectWrapper>
-                {
-                    analysisData.daily_returns && (
+                
+                    <div key={ticker}>{
+                            analysisData.daily_returns && (
                         <div>
-                            <ApexChart 
-                                index="Daily Returns" 
-                                x_axis={analysisData.daily_returns.x} 
-                                y_axis={analysisData.daily_returns.returns} 
-                                description="Daily Returns"
-                                width="500px"  
-                            />
-                            <ApexChart 
-                                index="Closing Price" 
-                                x_axis={analysisData.monthly_returns.x} 
-                                y_axis={analysisData.monthly_returns.closing_price} 
-                                description="Closing Price"
-                                width="500px"  
-                            />
-                            <ApexChart 
-                                index="Price Data"
-                                x_axis={analysisData.price_data.x} 
-                                y_axis={analysisData.price_data.adj_closing_price} 
-                                description="Price Data"
-                                width="500px"  
-                            />
-                            <ApexChart 
-                                index="Volume data"
-                                x_axis={analysisData.volume_data.x} 
-                                y_axis={analysisData.volume_data.volume} 
-                                description="Volume data"
-                                width="500px"  
-                            />
+                            <Row>
+                                <ApexChart 
+                                    //key={ticker}
+                                    index={"Daily Returns " + ticker} 
+                                    x_axis={analysisData.daily_returns.x} 
+                                    y_axis={analysisData.daily_returns.returns} 
+                                    description={"Daily Returns " + ticker}
+                                    width="500px"  
+                                />
+                                <ApexChart 
+                                    //key={ticker}
+                                    index={"Closing Price " + ticker}
+                                    x_axis={analysisData.monthly_returns[0].x} 
+                                    y_axis={analysisData.monthly_returns[0].closing_price} 
+                                    description={"Closing Price " + ticker}
+                                    width="500px"  
+                                />
+                            </Row>
+                            <Row>
+                                <ApexChart
+                                   // key={ticker}
+                                    index={"Price Data " + ticker}
+                                    x_axis={analysisData.price_data.x} 
+                                    y_axis={analysisData.price_data.adj_closing_price} 
+                                    description={"Price Data " + ticker}
+                                    width="500px"  
+                                />
+                                <ApexChart 
+                                    //key={ticker}
+                                    index={"Volume data" + ticker}
+                                    x_axis={analysisData.volume_data.x} 
+                                    y_axis={analysisData.volume_data.volume} 
+                                    description={"Volume data " + ticker}
+                                    width="500px"  
+                                />
+                            </Row>
                         </div>
-                    )
-                }
+                    )}
+                    </div>
                
             </ContentWrapper>
             <FooterContainer />

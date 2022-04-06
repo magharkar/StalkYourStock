@@ -32,19 +32,15 @@ function Login(){
         }
         axios.post(url, userJson).then(
             res => {
-                console.log(res);
                 if (res.status === 200) {
-                    console.log("Logged in");
                     localStorage.setItem("emailId",emailId);
                     navigate('/home');
                 } else {
-                    console.log("sets invalid login")
                     setIsLoginValid(false);
                 }
             }
         ).catch(
             error => {
-                console.log(error);
                setIsLoginValid(false);
             }
         )
@@ -64,7 +60,6 @@ function Login(){
 
 
 
-    console.log("isLoginValid", isLoginValid);
 
     return (
         <PageWrapper>
@@ -76,7 +71,6 @@ function Login(){
                         <ControlContainer>
                             <TextBox
                                 onChange={(event) => {
-                                    console.log("Email : " + event.target)
                                     setEmailId(event.target.value)
                                 }}
                             >

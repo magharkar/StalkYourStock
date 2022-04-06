@@ -18,7 +18,6 @@ export default function AdminMenu() {
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log(event.currentTarget);
   };
   const handleRouting = (event) => {
     const selectedOption = event.target.innerText;
